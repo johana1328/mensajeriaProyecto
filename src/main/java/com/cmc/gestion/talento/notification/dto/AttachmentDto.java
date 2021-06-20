@@ -4,7 +4,7 @@ public class AttachmentDto {
 
 	private String name;
 	private String path;
-	private String type;
+	private AttachmenType type;
 
 	public String getName() {
 		return name;
@@ -12,6 +12,11 @@ public class AttachmentDto {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "AttachmentDto [name=" + name + "]";
 	}
 
 	public String getPath() {
@@ -22,11 +27,11 @@ public class AttachmentDto {
 		this.path = path;
 	}
 
-	public String getType() {
+	public AttachmenType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(AttachmenType type) {
 		this.type = type;
 	}
 

@@ -7,17 +7,21 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class EmailNotificationDto {
-	
+
 	@NotNull(message = "El correo es importante")
 	@Email(message = "Correo invalido")
 	private String correoDestinatario;
-	
+
 	@NotBlank(message = "El asunto es importante")
 	private String asunto;
-	
+
 	@NotBlank(message = "El template es importante")
 	private String template;
-	private List<MapParametriaDto> parametria;
+	
+	@NotBlank(message = "El templateLayout es importante")
+	private String templateLayout;
+	
+	private List<MapParametriaDto> parametros;
 	private List<AttachmentDto> attachment;
 
 	public String getCorreoDestinatario() {
@@ -44,13 +48,6 @@ public class EmailNotificationDto {
 		this.template = template;
 	}
 
-	public List<MapParametriaDto> getParametria() {
-		return parametria;
-	}
-
-	public void setParametria(List<MapParametriaDto> parametria) {
-		this.parametria = parametria;
-	}
 
 	public List<AttachmentDto> getAttachment() {
 		return attachment;
@@ -58,6 +55,28 @@ public class EmailNotificationDto {
 
 	public void setAttachment(List<AttachmentDto> attachment) {
 		this.attachment = attachment;
+	}
+
+	public List<MapParametriaDto> getParametros() {
+		return parametros;
+	}
+
+	public void setParametros(List<MapParametriaDto> parametros) {
+		this.parametros = parametros;
+	}
+
+	@Override
+	public String toString() {
+		return "EmailNotificationDto [correoDestinatario=" + correoDestinatario + ", asunto=" + asunto + ", template="
+				+ template + ", parametria=" + parametros + ", attachment=" + attachment + "]";
+	}
+
+	public String getTemplateLayout() {
+		return templateLayout;
+	}
+
+	public void setTemplateLayout(String templateLayout) {
+		this.templateLayout = templateLayout;
 	}
 
 }

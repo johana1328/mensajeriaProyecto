@@ -21,4 +21,9 @@ public class MapParametriaDto {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "MapParametriaDto [key=" + key + ", value=" + value + "]";
+	}
+
 }
