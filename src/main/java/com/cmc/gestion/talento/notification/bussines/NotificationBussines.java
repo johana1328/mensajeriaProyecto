@@ -61,9 +61,7 @@ public class NotificationBussines {
 			helper.setTo(emailNotificationDto.getCorreoDestinatario());
 			helper.setText(html, true);
 			helper.setSubject(emailNotificationDto.getAsunto());
-			if(emailNotificationDto.getTemplateLayout().equals("GENERAL")) {
-				attachmenGeneric(helper);
-			}
+				attachmenGeneric(helper, emailNotificationDto.getTemplateLayout());
 			if (emailNotificationDto.getAttachment() != null) {
 				emailNotificationDto.getAttachment().forEach((attachment) -> {
 					try {
@@ -105,14 +103,21 @@ public class NotificationBussines {
 		return resource.getFile();
 	}
 	
-   private void attachmenGeneric(MimeMessageHelper helper) throws MessagingException, IOException {
+   private void attachmenGeneric(MimeMessageHelper helper, String templateLayout) throws MessagingException, IOException {
 	  
-	   helper.addInline("rss-circle-black", getAttachment("imagesGeneric/rss-circle-black.png"));
-	   helper.addInline("linkedin-circle-black", getAttachment("imagesGeneric/linkedin-circle-black.png"));
-	   helper.addInline("twitter-circle-black", getAttachment("imagesGeneric/twitter-circle-black.png"));
-	   helper.addInline("youtube-circle-black", getAttachment("imagesGeneric/youtube-circle-black.png"));
-	   helper.addInline("footerlogo", getAttachment("imagesGeneric/footerlogo.jpeg"));
-	   helper.addInline("headerlogo", getAttachment("imagesGeneric/headerlogo.png"));
+	   if (templateLayout.equals("GENERAL")) {
+		   helper.addInline("rss-circle-black", getAttachment("imagesGeneric/rss-circle-black.png"));
+		   helper.addInline("linkedin-circle-black", getAttachment("imagesGeneric/linkedin-circle-black.png"));
+		   helper.addInline("twitter-circle-black", getAttachment("imagesGeneric/twitter-circle-black.png"));
+		   helper.addInline("youtube-circle-black", getAttachment("imagesGeneric/youtube-circle-black.png"));
+		   helper.addInline("footerlogo", getAttachment("imagesGeneric/footerlogo.jpeg"));
+		   helper.addInline("headerlogo", getAttachment("imagesGeneric/headerlogo.png"));
+		
+	}else {
+		 helper.addInline("logo", getAttachment("imagesGeneric/logo.png"));
+		
+	}
+	   
 	   
    }
 
