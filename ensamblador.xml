@@ -21,5 +21,10 @@
 			<outputDirectory>/attachments</outputDirectory>
 			<fileMode>0777</fileMode>
 		</fileSet>
+		<fileSet>
+			<directory>${project.build.outputDirectory}/cfg</directory>
+			<outputDirectory>/cfg</outputDirectory>
+			<fileMode>0777</fileMode>
+		</fileSet>
 	</fileSets>
 </assembly>
